@@ -24,7 +24,7 @@ var app = app || {};
 			'keypress .edit': 'updateOnEnter',
 			'keydown .edit': 'revertOnEscape',
 			'blur .edit': 'close',
-			'click .priority-btn': 'prioritize'
+			'click .priority-btn': 'togglePriority'
 		},
 
 		// The TodoView listens for changes to its model, re-rendering. Since
@@ -131,11 +131,11 @@ var app = app || {};
 			this.model.destroy();
 		},
 
-		// this function implements the priority of a todo item.
-		prioritize: function() {
+		// Toggle the `"completed"` state of the model.
+		togglePriority: function() {
 			//update model
 			// console.log("update Model");
-			this.model.prioritize();
+			this.model.togglePriority();
 			//add corresponding class to the list-item
 			this.$el.toggleClass('priority', this.model.get('priority'));
 		}
